@@ -1,0 +1,11 @@
+[server]
+addr="0.0.0.0"
+port=8080
+root_user="root"
+root_password="123456"
+[db]
+url="postgres://bluesnow:123456@localhost:5432/bluesnow"
+auto_migration= true
+[jwt]
+secret="test_secret"
+exp=86400 # 60*60*24

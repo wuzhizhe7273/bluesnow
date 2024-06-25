@@ -1,0 +1,13 @@
+[package]
+name = "cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+server={workspace = true}
+clap = {workspace = true,features = ["derive"]}
+tokio = {workspace = true,features = ["rt-multi-thread","macros"]}
+anyhow = {workspace = true}
+dotenvy = {workspace = true}
+bluesnow-result={workspace = true}
+sea-orm = {workspace = true}

@@ -1,0 +1,29 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+entity={workspace=true}
+bluesnow-result={workspace = true}
+migration={workspace = true}
+tokio={workspace=true,features = ["rt-multi-thread","macros"]}
+axum = {workspace=true}
+clap = {workspace=true,features = ["derive","env"] }
+thiserror = {workspace=true}
+anyhow = {workspace=true}
+strum = {workspace=true,features = ["derive"]}
+figment={workspace=true,features = ["toml","env"]}
+serde = { version = "1.0.203", features = ["derive"] }
+sea-orm = {workspace=true}
+argon2 = {workspace=true}
+tracing = {workspace=true}
+garde = {workspace=true,features = ["derive","email"]}
+uuid={workspace=true}
+tower = {workspace=true}
+axum-extra = {workpace=true,features = ["typed-header"]}
+jsonwebtoken = {workspace=true}
+chrono = {workspace=true}
+once_cell = {workspace=true}
+serde_json = {workspace = true}
+

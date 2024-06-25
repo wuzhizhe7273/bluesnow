@@ -1,0 +1,20 @@
+[package]
+name = "bluesnow-result"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+entity = {workspace = true}
+thiserror = {workspace = true}
+serde_json = {workspace = true}
+clap = {workspace = true}
+tokio = {workspace = true}
+anyhow = {workspace = true}
+garde = {workspace = true}
+sea-orm = {workspace = true}
+jsonwebtoken = {workspace = true}
+figment = {workspace = true}
+axum = {workspace = true}
+axum-extra = {workspace = true,features = ["typed-header"]}
+argon2 = {workspace = true}
+serde = { version = "1.0.203", features = ["derive"] }
