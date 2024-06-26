@@ -30,9 +30,9 @@ impl Into<StartParam> for StartArgs {
 pub struct DbRefreshArgs{
     #[arg(id = "database-url",short,long,env="BLUESNOW_DB_URL")]
     pub database_url:String,
-    #[arg(id="root-user",env="BLUESNOW_SERVER_ROOT_USER")]
+    #[arg(id="root-user",long,env="BLUESNOW_SERVER_ROOT_USER")]
     pub root_user:String,
-    #[arg(id="root-password",env="BLUESNOW_SERVER_ROOT_PASSWORD")]
+    #[arg(id="root-password",long,env="BLUESNOW_SERVER_ROOT_PASSWORD")]
     pub root_password:String
 }
 

@@ -38,11 +38,11 @@ where
     Ok(())
 }
 
-pub async fn check_init<C>(conn: &C) -> bluesnow_result::Result<bool>
+pub async fn check_init<C>(conn: &C,param:&DbInitParam) -> bluesnow_result::Result<bool>
 where
     C: ConnectionTrait,
 {
-    match get_root_user(conn).await {
+    match get_root_user(conn,param).await {
         Ok(_) => return Ok(true),
         Err(e) => {
             return match e {
@@ -58,25 +58,24 @@ where
     for<'a> &'a C: IntoSchemaManagerConnection<'a>,
 {
     Migrator::up(conn, None).await?;
-    if !check_init(conn).await? {
+    if !check_init(conn,param).await? {
         init_data(conn, param).await?;
     }
     Ok(())
 }
 
-async fn get_root_user<C>(conn: &C) -> bluesnow_result::Result<entity::user::Model>
+async fn get_root_user<C>(conn: &C,param:&DbInitParam) -> bluesnow_result::Result<entity::user::Model>
 where
     C: ConnectionTrait,
 {
-    let name = &Config::get()?.server.root_user;
-    repo::user::get_by_username(conn, name).await
+    repo::user::get_by_username(conn, &param.root_user).await
 }
 pub async fn setup_super_user<C>(conn: &C, param: &DbInitParam) -> bluesnow_result::Result<()>
 where
     C: ConnectionTrait,
 {
     let password = utils::pwd::hash(&param.root_password).await?;
-    let root = match get_root_user(conn).await {
+    let root = match get_root_user(conn,param).await {
         Ok(model) => {
             let mut model = model.into_active_model();
             model.password = Set(password);
